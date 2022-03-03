@@ -112,16 +112,23 @@ function draw() {
 
     ball();
 
+    startSketch();
+
   }
 
 }
 
+
+}
+
 function startSketch(){
+push();
     mic = new p5.AudioIn();
     mic.start();
     sketchStarted = true;
-
+pop();
 }
+
 function ball(){
   //makes ball move a certan amount after each "draw" loop, realative to MouseY position.
     speed = mouseY/30 * bounce;
