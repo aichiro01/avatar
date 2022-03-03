@@ -52,7 +52,6 @@ function draw() {
 
   if(sketchStarted){
 
-
     move=map(mic.getLevel(), 0, 1, 350, 355)
 
     background(173,216,230);
