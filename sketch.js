@@ -20,113 +20,118 @@ let wallpaper2;
 
 function setup() {
   createCanvas(500, 500);
-  
+
+
+  createButton("start").mousePressed(startSketch);
   mic = new p5.AudioIn();
   mic.start();
   move = (mouseX);
-  
+
   wallpaper1 = new wallpaper(650, -350, 90, .5);
-  
+
   wallpaper2 = new wallpaper(525, -100, 80, 1.23 );
-  
+
   wallpaper3 = new wallpaper(450, -350, 45, .25);
-  
+
   wallpaper4 = new wallpaper(525, -100, 60, .89 );
-  
+
   wallpaper5 = new wallpaper(600, -10, 60, 1 );
-  
+
   wallpaper6 = new wallpaper(300, -350, -20, .25);
-  
- 
+
+
 }
 
 function draw() {
-  
+
   move=map(mic.getLevel(), 0, 1, 350, 355)
-  
+
   background(173,216,230);
-  
+
   angleMode(DEGREES);
-  
+
   //console.log(move);
-  
+
   //console.log("mic level " + mic.getLevel());
-  
+
   //console.log( 'my mouse X is: ' + mouseX);
-  
+
   //console.log( 'my mouse Y is: ' + mouseY);
-  
+
  // wallpaper(850, -45, 90);
-  
+
   wallpaper1.display();
   wallpaper2.display();
   wallpaper3.display();
   wallpaper4.display();
   wallpaper5.display();
   wallpaper6.display();
-  
+
   wallpaper1.move();
   wallpaper2.move();
   wallpaper3.move();
   wallpaper4.move();
   wallpaper5.move();
   wallpaper6.move();
-  
-  
-  
+
+
+
   ground();
-     
+
   ears();
-  
+
   head();
-  
+
   face();
-  
+
   body();
-  
+
   stomach();
-  
+
   feet();
-  
+
   mouth();
-  
+
   waterbowl();
-                
+
   eyes();
-  
+
   bone(width * -.21, height * -.3, move);
-  
+
   earMoveX = map(mouseX, 0, width, -22, 10,true);
-  
+
   earMoveY = map(mouseY, 0, height, -15, 10, true);
-  
+
   ball();
 }
 
-
+function startSketch(){
+    mic = new p5.AudioIn();
+    mic.start();
+}
 function ball(){
   //makes ball move a certan amount after each "draw" loop, realative to MouseY position.
     speed = mouseY/30 * bounce;
     x= x + speed;
-  
+
     //creates ball
 push();
   noStroke();
   fill(255,0, 0)
   ellipse (x, y, 40, 40);
 pop();
-    //call "-bounce" when ball hits top or lower screen,inverting the y movement direction. 
+    //call "-bounce" when ball hits top or lower screen,inverting the y movement direction.
   if (x <=0 || x >=height){
     bounce = bounce *-1;
   }
 }
 
-function ears(){ 
+function ears(){
 push();
 translate(width * 0, height * 0);
   strokeWeight(2);
   fill(16,16,1)
-  triangle(width * .644, height * .15, width * .68+ earMoveX, height * .43+ earMoveY, width * .75,height * .15);  
+  triangle(width * .644, height * .15, width * .68+ earMoveX, height * .43+ earMoveY, width * .75,height * .15);
   triangle(width * .06, height * .15, width * .116+ earMoveX, height * .43+ earMoveY, width * .172, height * .15);
 pop();
 }
@@ -150,10 +155,10 @@ push();
 translate(width * 0, height * 0);
 //inner lft eye
   fill(0,0,0);
-  circle(width * .29, height * .29, width * .04); 
+  circle(width * .29, height * .29, width * .04);
 //lft spot
   fill(255,255,255)
-  circle(width * .3, height * .27, width * .02);  
+  circle(width * .3, height * .27, width * .02);
 //outer rt eye
   fill(101,67,33);
   circle(width * .5208, height * .29, width * .09);
@@ -162,7 +167,7 @@ translate(width * 0, height * 0);
   circle(width * .5208, height * .29, width * .04);
 //rt spot
   fill(255,255,255);
-  circle(width * .5368, height * .27, width * .02); 
+  circle(width * .5368, height * .27, width * .02);
 pop();
 }
 
@@ -202,7 +207,7 @@ translate(width * 0,height * 0)
   fill(101,67,33);
   circle(width * .29, height * .29, width * .09);
 pop();
-}  
+}
 
 function body(){
 push();
@@ -225,14 +230,14 @@ translate(width * 0,height * 0)
 pop();
 }
 
-function feet(){ 
+function feet(){
 push();
 translate(width * 0,height * 0)
   fill(101,67,33);
-  circle(width * .296, height * .7, width * .07); 
+  circle(width * .296, height * .7, width * .07);
   circle(width * .51, height * .7, width * .07);
-  circle(width * .326, height * .7, width * .076); 
-  circle(width * .484, height * .7, width * .076);  
+  circle(width * .326, height * .7, width * .076);
+  circle(width * .484, height * .7, width * .076);
 pop();
 }
 
@@ -261,8 +266,3 @@ translate(width* 0, height *0);
   ellipse(width * .767, height * .812, width* .05, height * .007);
 pop();
 }
-
-
-
-
-
