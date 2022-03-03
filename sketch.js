@@ -51,7 +51,6 @@ function setup() {
 function draw() {
 
   if(sketchStarted){
-
     move=map(mic.getLevel(), 0, 1, 350, 355)
 
     background(173,216,230);
@@ -60,7 +59,7 @@ function draw() {
 
     //console.log(move);
 
-    //console.log("mic level " + mic.getLevel());
+    console.log("mic level " + mic.getLevel());
 
     //console.log( 'my mouse X is: ' + mouseX);
 
@@ -81,8 +80,6 @@ function draw() {
     wallpaper4.move();
     wallpaper5.move();
     wallpaper6.move();
-
-
 
     ground();
 
@@ -113,11 +110,9 @@ function draw() {
     ball();
 
     startSketch();
-
   }
 
 }
-
 
 
 function startSketch(){
