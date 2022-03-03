@@ -121,12 +121,10 @@ function draw() {
 
 
 function startSketch(){
-push();
     mic = new p5.AudioIn();
     mic.start();
     sketchStarted = true;
     console.log('start sketch!')
-pop();
 }
 
 function ball(){
