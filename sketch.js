@@ -18,6 +18,9 @@ let wallpaper1;
 
 let wallpaper2;
 
+let sketchStarted = false;
+
+
 function setup() {
   createCanvas(500, 500);
 
@@ -25,6 +28,9 @@ function setup() {
   createButton("start").mousePressed(startSketch);
   mic = new p5.AudioIn();
   mic.start();
+
+
+
   move = (mouseX);
 
   wallpaper1 = new wallpaper(650, -350, 90, .5);
@@ -44,70 +50,78 @@ function setup() {
 
 function draw() {
 
-  move=map(mic.getLevel(), 0, 1, 350, 355)
-
-  background(173,216,230);
-
-  angleMode(DEGREES);
-
-  //console.log(move);
-
-  //console.log("mic level " + mic.getLevel());
-
-  //console.log( 'my mouse X is: ' + mouseX);
-
-  //console.log( 'my mouse Y is: ' + mouseY);
-
- // wallpaper(850, -45, 90);
-
-  wallpaper1.display();
-  wallpaper2.display();
-  wallpaper3.display();
-  wallpaper4.display();
-  wallpaper5.display();
-  wallpaper6.display();
-
-  wallpaper1.move();
-  wallpaper2.move();
-  wallpaper3.move();
-  wallpaper4.move();
-  wallpaper5.move();
-  wallpaper6.move();
+  if(sketchStarted){
 
 
+    move=map(mic.getLevel(), 0, 1, 350, 355)
 
-  ground();
+    background(173,216,230);
 
-  ears();
+    angleMode(DEGREES);
 
-  head();
+    //console.log(move);
 
-  face();
+    //console.log("mic level " + mic.getLevel());
 
-  body();
+    //console.log( 'my mouse X is: ' + mouseX);
 
-  stomach();
+    //console.log( 'my mouse Y is: ' + mouseY);
 
-  feet();
+   // wallpaper(850, -45, 90);
 
-  mouth();
+    wallpaper1.display();
+    wallpaper2.display();
+    wallpaper3.display();
+    wallpaper4.display();
+    wallpaper5.display();
+    wallpaper6.display();
 
-  waterbowl();
+    wallpaper1.move();
+    wallpaper2.move();
+    wallpaper3.move();
+    wallpaper4.move();
+    wallpaper5.move();
+    wallpaper6.move();
 
-  eyes();
 
-  bone(width * -.21, height * -.3, move);
 
-  earMoveX = map(mouseX, 0, width, -22, 10,true);
+    ground();
 
-  earMoveY = map(mouseY, 0, height, -15, 10, true);
+    ears();
 
-  ball();
+    head();
+
+    face();
+
+    body();
+
+    stomach();
+
+    feet();
+
+    mouth();
+
+    waterbowl();
+
+    eyes();
+
+    bone(width * -.21, height * -.3, move);
+
+    earMoveX = map(mouseX, 0, width, -22, 10,true);
+
+    earMoveY = map(mouseY, 0, height, -15, 10, true);
+
+    ball();
+
+  }
+
 }
 
 function startSketch(){
     mic = new p5.AudioIn();
     mic.start();
+    sketchStarted = true;
+
 }
 function ball(){
   //makes ball move a certan amount after each "draw" loop, realative to MouseY position.
